@@ -1,84 +1,31 @@
-[![React-Native](https://img.shields.io/badge/React%20Native-333.svg?style=for-the-badge&logo=react&labelColor=4630eb&logoWidth=30&logoColor=fff)](https://reactnative.dev/) [![supports iOS and Android](https://img.shields.io/badge/Getting%20Started-4630EB.svg?style=for-the-badge&labelColor=000)](https://reactnative.dev/docs/getting-started) [![Subscribe To The Channel](https://img.shields.io/badge/Subscribe-red.svg?style=for-the-badge&logo=youtube&labelColor=red&logoWidth=20&logoColor=fff)](https://www.youtube.com/channel/UCC6L3eilEVJhhqiAdepWcng)
+# LEFT-HOOK
 
-# React-Native
-_____________________________________________________________________
-```sh
-install drawer dependency
-yarn add @react-navigation/drawer
-or
-npm i @react-navigation/drawer
-```
-# Animated Custom Drawer Navigation v6
+- It is a utility which uses the pre-existing hooks of git to perform tasks before or after a git operation.
+- There are many hooks in git which you can use with the left-hook utility, you can find all the scripts of hook which are available for git in the .git/hooks folder.
+- To make changes for the operation which git perform after calling a hook you can define in the lefthook.yml file
 
-Link: https://youtu.be/FATLP5SkGxE
+# Configuration
 
-### Demo
-<img width="600" height="600" src="/gif/drawer1.png">
+- To configure the left-hook for performing operation for git hooks, you write in the yml file, which will create configuration for the script which eventually runs when you perform the git operation, for example- you want to perform check for commit-msg when commiting, you can create a custom script or use a tool like commitlint for checking the commit msg, you can configure it in the left-hook yml.
 
-### Like, Share and subscribe and stay tuned for more such type of videos...
-_____________________________________________________________________
-# Floating Action Button (FAB)
+  ```
+  commit-msg:
+    commands:
+      'lint commit message':
+        run: yarn run commitlint --edit {1}
+  ```
 
-Tutorial: https://youtu.be/FATLP5SkGxE
-
-### react-native-reanimated-2
-```
-installation and configuration for android/ios
-https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation
-```
-### Demo
-<img src="/gif/FAB-demo.gif" width="250" height="500"/>
-
-_____________________________________________________________________
-### React-Navigation
-https://reactnavigation.org/docs/getting-started
-
-### react-native-animatable
-https://github.com/oblador/react-native-animatable
-
-Tutorial:
-* Tab1 link: https://youtu.be/XiutL0uLICg
-* Tab2 link: https://youtu.be/spA7Rf9Ud_4
-* Tab3 link: https://youtu.be/Y7apwk6hQOY
-
-### Demo
-<img src="/gif/anim-Tab.gif" width="250" height="500"/>
-
-### For Tab4:
-* https://reactnavigation.org/docs/material-bottom-tab-navigator
-```
-npm install @react-navigation/material-bottom-tabs react-native-paper react-native-vector-icons
-```
-<img src="gif/tab4.jpg" width="250" height="120"/>
-
-### For Tab5:
-* https://reactnavigation.org/docs/material-top-tab-navigator
-```
-npm install @react-navigation/material-top-tabs react-native-tab-view
-npm install react-native-pager-view
-```
-for expo
-```
-expo install react-native-pager-view
-```
-
-<picture>
-  <source width="250" height="140" media="(prefers-color-scheme: dark)" srcset="https://github.com/vishalpwr/react-native-ui/blob/master/gif/tab5.jpg">
-  <img src="https://github.com/vishalpwr/react-native-ui/blob/master/gif/tab5.jpg">
-</picture>
-______________________________________________________________________________________________
-
-clone the app and run.
-```
-npm install or yarn
-```
-start react native server
-```
-npm start or react-native start
-```
-run app into virtual device using
-```
-react-native run-android 
-or
-react-native run-ios
-```
+- There are mainly 2 types how you can perform a script run when performing a git opertaion.
+  1. Using command for running a program which you is installed system-wide, like yarn or git, but when you run them in a directory they have a local scope.
+  2. Using scripts, which is creating your own custom scripts, for performing a task after hook is called, you add this script in your project in .lefthook folder, you have this script under the hook you will call this script for. for example
+     - You created a script "my-script.sh" for running post-commit, then you will add that script in `.lefthook/post-commit/my-script.sh`
+     ````yml
+     post-commit:
+         scripts:
+             'my-script.sh':
+                 runner: bash
+             'any.go':
+                 runner: go run
+         ```
+     ````
+- There are many other configuration you can do with left-hook, which you can see on this [page.](https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md)

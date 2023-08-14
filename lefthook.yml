@@ -21,11 +21,6 @@ pre-commit:
     # prettier:
     #   glob: '*.{js,ts,jsx,tsx}'
     #   run: yarn prettier {staged_files} && git add {staged_files}
-    # govet:
-    #   tags: backend style
-    #   files: git ls-files -m
-    #   glob: '*.go'
-    #   run: go vet {files}
   # scripts:
   #   'hello.js':
   #     runner: node
